@@ -14,6 +14,14 @@
 
         <!-- Form to add employee -->
         <form id="employeeForm">
+            <label for="name">select category</label>
+            <select class="form-select" aria-label="Default select example" id="category" name="category"> 
+                <option value="mvp" selected>mvp</option>
+                <option value="keepitup">Keep It Up</option>
+                <option value="needtowork">Need To Work</option>
+                <option value="aaaa">AAAA</option>
+                <option value="bbbb">BBBB</option>
+              </select>
             <div class="form-group">
                 <label for="name">Employee Name</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter employee name" required>
@@ -26,10 +34,10 @@
                 <label for="role">Role</label>
                 <input type="text" class="form-control" id="role" name="role" placeholder="Enter employee role (e.g., mvp, keepitup, needtowork)" required>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="category">Category</label>
                 <input type="text" class="form-control" id="category" name="category" placeholder="Enter category (e.g., Keep It Up)" required>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-primary">Add Employee</button>
         </form>
 
@@ -69,7 +77,7 @@
         </form>
         
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="admin.js"></script>
 </body>
 </html>
