@@ -1,5 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Function to dynamically add tabs and content sections
+
+    const categoryDropdown = document.getElementById('category');
+
+    // Function to update the dropdown based on active tab
+    function updateCategoryDropdown() {
+        const activeTab = document.querySelector('.nav-link.active');
+        
+        if (activeTab) {
+            const activeTabId = activeTab.getAttribute('id').replace('-tab', ''); // Remove '-tab' from tab id
+            categoryDropdown.value = activeTabId; // Set dropdown value based on tab
+        }
+    }
+
+    // Add event listener to tabs to detect when they change
+    document.getElementById('achievementTabs').addEventListener('click', function(event) {
+        let tab = event.target;
+        if (tab.classList.contains('nav-link')) {
+            setTimeout(updateCategoryDropdown, 100); // Delay to allow tab to change
+        }
+    });
+
+    // Initially update dropdown based on the default active tab
+    updateCategoryDropdown();
+
     function addTabsAndContent() {
         fetch(`/employees`) // Fetch the employee data from your API
             .then(response => response.json())
@@ -43,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
     }
+    
 
     // Function to fetch and display employees by category
     function fetchEmployees(category, elementId) {

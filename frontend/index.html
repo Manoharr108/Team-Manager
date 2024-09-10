@@ -12,7 +12,70 @@
         <h2 class="text-center">Employee Achievements</h2>
 
         <!-- Nav tabs -->
-        <button type="button" class="btn btn-warning" style="float: right;">ADD➕</button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right;">
+            ADD➕</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Add Employee</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">❌</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="employeeForm">
+                            <label for="name" style="display: none;">select category</label>
+                            <select class="form-select" aria-label="Default select example" id="category" name="category" style="display: none;"> 
+                                <option value="mvp">mvp</option>
+                                <option value="keepitup">Keep It Up</option>
+                                <option value="needtowork">Need To Work</option>
+                                <option value="aaaa">AAAA</option>
+                                <option value="bbbb">BBBB</option>
+                                <option value="jjjj">JJJJ</option>
+                            </select>
+                            <div class="form-group">
+                                <label for="name">Employee Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter employee name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="photo">Employee Photo URL</label>
+                                <input type="text" class="form-control" id="photo" name="photo" placeholder="Enter employee photo URL" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <input type="text" class="form-control" id="role" name="role" placeholder="Enter employee role (e.g., mvp, keepitup, needtowork)" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Employee</button>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Message:</label>
+                      <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <ul class="nav nav-tabs" id="achievementTabs" role="tablist">
             <!-- <li class="nav-item">
                 <a class="nav-link active" id="mvp-tab" data-toggle="tab" href="#mvp" role="tab">MVP</a>
@@ -49,6 +112,9 @@
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
     <script src="app.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>
