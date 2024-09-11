@@ -20,35 +20,21 @@ exports.DeleteEmplyoee = async(req, res)=>{
     }
 }
 exports.ModifyEmployee = async (req, res) => {
-    const id = "60f719123456789123456789"; // Replace with a valid ID from your database
-    const name = "Test Name";
-    const photo = "http://example.com/photo.jpg";
-    const role = "Developer";
-    const category = "Keep It Up";
-
-    try {
-        let emp = await operation.findOneAndUpdate(
-            { _id: id },
-            {
-                $set: {
-                    name: name,
-                    photo: photo,
-                    role: role,
-                    category: category
-                }
-            },
-            { new: true }
-        );
-
-        if (!emp) {
-            return res.status(404).json({ message: "Employee not found!" });
+   let {id} = req.params;
+   let {name, photo, role} = req.body;
+   try {
+    let emp = await operation.findOneAndUpdate({_id:id},
+        {
+            name:name,
+            photo:photo,
+            role:role
         }
-
-        return res.status(200).json({ message: "Successfully updated!" });
-    } catch (error) {
-        console.error('Error while modifying employee:', error);
-        return res.status(500).json({ message: "Something went wrong while modifying!" });
-    }
+    )
+    await emp.save({});
+    return res.status(200).json({message:"successfully updated user!!"})
+   } catch (error) {
+    return res.status(500).json({message:error.message})
+   }
 };
 
 exports.Emplyoee = async(req,res)=>{

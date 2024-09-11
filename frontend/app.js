@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Function to dynamically add tabs and content sections
-
+   
     const categoryDropdown = document.getElementById('category');
 
     // Function to update the dropdown based on active tab
@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initially update dropdown based on the default active tab
     updateCategoryDropdown();
+
+    
 
     function addTabsAndContent() {
         fetch(`/employees`) // Fetch the employee data from your API
@@ -51,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         </li>
                     `;
                     tabContainer.innerHTML += tab;
-
                     // Create corresponding tab content container
                     let tabContent = `
                         <div class="tab-pane fade ${index === 0 ? 'show active' : ''}" id="${tabPaneId}" role="tabpanel">
@@ -87,6 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h5 class="card-title">${employee.name}</h5>
                                 <p class="card-text">Employee Id: ${employee._id}</p>
                                 <p class="card-text"> ${employee.role}</p>
+                            </div>
+
+                            <!-- Buttons that appear on hover -->
+                            <div class="card-buttons">
+                                <button class="btn btn-warning edit-btn" value="${employee._id}"  data-bs-toggle="modal" data-bs-target="#editModal" onclick="setvalue(this)">Edit ✏️</button>
+                                <button class="btn btn-danger delete-btn" value="${employee._id}" onclick="DeleteHere(this)" >Delete ❌</button>
                             </div>
                         </div>
                     </div>

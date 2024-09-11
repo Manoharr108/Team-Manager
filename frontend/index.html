@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Achievements</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -22,11 +23,11 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">❌</button>
                     </div>
                     <div class="modal-body">
-                        <form id="employeeForm">
+                        <form id="modalform">
                             <label for="name" style="display: none;">select category</label>
                             <select class="form-select" aria-label="Default select example" id="category" name="category" style="display: none;"> 
                                 <option value="mvp">mvp</option>
-                                <option value="keepitup">Keep It Up</option>
+                                <option value="keepitup" selected="selected">Keep It Up</option>
                                 <option value="needtowork">Need To Work</option>
                                 <option value="aaaa">AAAA</option>
                                 <option value="bbbb">BBBB</option>
@@ -76,6 +77,35 @@
               </div>
             </div>
           </div>
+          <!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editModalLabel">Edit Employee</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">❌</button>
+            </div>
+            <div class="modal-body">
+                <form id="editModalForm">
+                    <input type="hidden" id="editEmployeeId" name="employeeId">
+                    <div class="form-group">
+                        <label for="editName">Employee Name</label>
+                        <input type="text" class="form-control" id="editName" name="name" placeholder="Enter employee name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPhoto">Employee Photo URL</label>
+                        <input type="text" class="form-control" id="editPhoto" name="photo" placeholder="Enter employee photo URL" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRole">Role</label>
+                        <input type="text" class="form-control" id="editRole" name="role" placeholder="Enter employee role" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
         <ul class="nav nav-tabs" id="achievementTabs" role="tablist">
             <!-- <li class="nav-item">
                 <a class="nav-link active" id="mvp-tab" data-toggle="tab" href="#mvp" role="tab">MVP</a>
@@ -113,8 +143,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
     <script src="app.js"></script>
-    <script src="admin.js"></script>
+    <script src="clickhere.js"></script>
+    <!-- <script src="admin.js"></script> -->
+     <!-- this is for modal add -->
+     <script src="modaladd.js"></script>
 </body>
 </html>

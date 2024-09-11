@@ -5,6 +5,7 @@ const port = 3000;
 const router = require("./routes/router")
 app.use(express.json())
 app.use(express.static("./frontend"))
+app.use(express.urlencoded({extended:false}))
 
 app.use("/",router)
 
