@@ -56,3 +56,12 @@ exports.AllEmployee = async(req,res)=>{
         return res.status(500).json({message:"something went wrong!"})
     }
 }
+exports.FindAnEmplyoee = async(req,res)=>{
+    let {id} = req.params;
+    try {
+        let emp = await operation.findOne({_id:id});
+        return res.status(200).json(emp)
+    } catch (error) {
+        return res.status(500).json({message:"something went wrong!"})
+    }
+}

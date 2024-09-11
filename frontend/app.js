@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Extract unique categories from employee data
                 let categories = [...new Set(data.emp.map(employee => employee.category))];
-                
                 // Create tabs and corresponding content for each category
                 categories.forEach((category, index) => {
                     let tabId = `${category}-tab`;

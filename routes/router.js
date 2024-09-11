@@ -7,5 +7,6 @@ router.get("/emp/:category",controller.Emplyoee)
 router.post("/add",controller.AddEmplyoee);
 router.delete("/delete/:id",controller.DeleteEmplyoee);
 router.put("/edit/:id", controller.ModifyEmployee)
+router.get("/employee/:id", controller.FindAnEmplyoee)
 
 module.exports = router;

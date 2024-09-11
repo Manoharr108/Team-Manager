@@ -9,13 +9,12 @@ app.use(express.urlencoded({extended:false}))
 require("dotenv").config()
 app.use("/",router)
 
-
-const dbURI = 'mongodb+srv://manohar2004gr:5DFpcNwqPVvyLaww@testapi.unppitm.mongodb.net/?retryWrites=true&w=majority&appName=TestApi';
-
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Successfully connected to DB!'))
-  .catch(err => console.error('Error connecting to DB:', err));
-
-app.listen(port,()=>{
-    console.log("Port listening successfully on port 3000!");
+mongoose.connect(process.env.mongoDB).then(()=>{
+    console.log("successfully connected to DB!")
+    app.listen(port,()=>{
+        console.log("Port listening successfully on port 3000!");
+    })
+})
+.catch((err)=>{
+    console.log(err.message)
 })
