@@ -10,7 +10,7 @@ require("dotenv").config()
 app.use("/",router)
 
 
-mongoose.connect(process.env.mongoDB).then(()=>{
+mongoose.connect("mongodb+srv://manohar2004gr:5DFpcNwqPVvyLaww@testapi.unppitm.mongodb.net/?retryWrites=true&w=majority&appName=TestApi").then(()=>{
     console.log("successfully connected to DB!")
     app.listen(port,()=>{
         console.log("Port listening successfully on port 3000!");
