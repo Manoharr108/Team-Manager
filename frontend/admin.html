@@ -8,50 +8,29 @@
 </head>
 <body>
     <div class="container mt-5">
-        <button type="button" class="btn btn-warning">Back Home</button>
+      <a href="/">  <button type="button" class="btn btn-warning">Back Home</button></a>
         <div id="resultMessage" class="mt-3"></div>
-        <h2 class="text-center">Add New Employee</h2>
+        <h2 class="text-center">Add New Category</h2>
 
         <!-- Form to add employee -->
-        <form id="employeeForm">
-            <label for="name">select category</label>
-            <select class="form-select" aria-label="Default select example" id="category" name="category"> 
-                <option value="mvp" selected>mvp</option>
-                <option value="keepitup">Keep It Up</option>
-                <option value="needtowork">Need To Work</option>
-                <option value="aaaa">AAAA</option>
-                <option value="bbbb">BBBB</option>
-                <option value="jjjj">JJJJ</option>
-              </select>
+        <form id="categoryForm">
             <div class="form-group">
-                <label for="name">Employee Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter employee name" required>
-            </div>
-            <div class="form-group">
-                <label for="photo">Employee Photo URL</label>
-                <input type="text" class="form-control" id="photo" name="photo" placeholder="Enter employee photo URL" required>
-            </div>
-            <div class="form-group">
-                <label for="role">Role</label>
-                <input type="text" class="form-control" id="role" name="role" placeholder="Enter employee role (e.g., mvp, keepitup, needtowork)" required>
-            </div>
-            <!-- <div class="form-group">
-                <label for="category">Category</label>
+                <label for="category">Add Your Own Category</label>
                 <input type="text" class="form-control" id="category" name="category" placeholder="Enter category (e.g., Keep It Up)" required>
-            </div> -->
-            <button type="submit" class="btn btn-primary">Add Employee</button>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Category</button>
         </form>
 
-        <form id="employeeDeleteForm" class="my-5">
+        <!-- <form id="employeeDeleteForm" class="my-5">
                 <h2 class="text-center">Delete Employee</h2>
                 <div class="form-group">
                     <label for="id">Emplyoee ID</label>
                     <input type="text" class="form-control" id="id" name="id" placeholder="Enter employee ID" required>
                 </div>
                 <button type="submit" class="btn btn-danger">Delete Employee</button>
-        </form>
+        </form> -->
 <!-- this is modify section -->
-        <form id="employeeModifyForm" class="my-5">
+        <!-- <form id="employeeModifyForm" class="my-5">
             <h2 class="text-center">Modify Employee</h2>
             <form id="employeeForm">
                 <div class="form-group">
@@ -75,7 +54,7 @@
                     <input type="text" class="form-control" id="category" name="category" placeholder="Enter category (e.g., Keep It Up)" required>
                 </div>
                 <button type="submit" class="btn btn-success">Modify Employee</button>
-        </form>
+        </form> -->
         
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
