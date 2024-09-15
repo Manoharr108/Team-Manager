@@ -36,48 +36,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Extract unique categories from employee data
                  categories = [...new Set(data.emp.map(employee => employee.category))];
-                 tabdelete.value = categories[0]
-                // Populate dropdown with categories
-                categories.forEach(category => {
-                    let option = document.createElement('option');
-                    option.value = category;
-                    option.textContent = category;
-                    categoryDropdown.appendChild(option);
-                });
-
-                // Create tabs and corresponding content for each category
-                categories.forEach((category, index) => {
+                 // Populate dropdown with categories
+                 categories.forEach(category => {
+                     let option = document.createElement('option');
+                     option.value = category;
+                     option.textContent = category;
+                     categoryDropdown.appendChild(option);
+                    });
+                    
+                    
+                    // Create tabs and corresponding content for each category
+                    categories.forEach((category, index) => {
                     let tabId = `${category}-tab`;
                     let tabPaneId = `${category}-pane`;
                     
-                    // Create a new tab
-                    let tab = `
-                        <li class="nav-item">
-                            <a class="nav-link ${index === 0 ? 'active' : ''}" id="${tabId}" data-toggle="tab" href="#${tabPaneId}" role="tab">
-                                ${category.toUpperCase()}
-                            </a>
-                        </li>
-                    `;
-                    tabContainer.innerHTML += tab;
+                            let tab = `
+                                <li class="nav-item">
+                                    <a class="nav-link ${index === 0 ? 'active' : ''}" id="${tabId}" data-toggle="tab" href="#${tabPaneId}" role="tab">
+                                        ${category.toUpperCase()}
+                                    </a>
+                                </li>
+                            `;
+                            tabContainer.innerHTML += tab;
                     
-                    // Create corresponding tab content container
-                    let tabContent = `
-                        <div class="tab-pane fade ${index === 0 ? 'show active' : ''}" id="${tabPaneId}" role="tabpanel">
-                            <div id="${category}Employees" class="row"></div>
-                        </div>
-                    `;
-                    tabContentContainer.innerHTML += tabContent;
-
-                    // Load employees for the first tab (active tab)
+                            // Create corresponding tab content container
+                            let tabContent = `
+                                <div class="tab-pane fade ${index === 0 ? 'show active' : ''}" id="${tabPaneId}" role="tabpanel">
+                                    <div id="${category}Employees" class="row"></div>
+                                </div>
+                            `;
+                            tabContentContainer.innerHTML += tabContent;
+                    
+                            // Load employees for the first tab (active tab)
                     if (index === 0) {
-                        fetchEmployees(category, `${category}Employees`);
-                    }
+                            fetchEmployees(category, `${category}Employees`);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching employee data:', error);
                 });
-            })
-            .catch(error => {
-                console.error('Error fetching employee data:', error);
-            });
-    }
+            }
+            tabdelete.value = categories[0]
 
     // Function to fetch and display employees by category
     function fetchEmployees(category, elementId) {
@@ -85,11 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(async(data) => {
                 let employeeContainer = document.getElementById(elementId);
-                employeeContainer.innerHTML = ''; // Clear previous content
-              
-                    // If no employees, show a message indicating the tab is empty
-                    // Loop through the employees and display them
-                    // console.log(data.length)
+                employeeContainer.innerHTML = ''; 
+
                     if(data.length==1){
                         // alert("hey! this tab is empty")
                         employeeContainer.innerHTML=`  <h1>hey! this is empty</h1>`
@@ -132,10 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let tab = event.target;
         if (tab.tagName === 'A') {
             let category = tab.getAttribute('href').substring(1).replace('-pane', ''); // Extract category from tab's href
-            // fetchEmployees(category, `${category}Employees`);
-            localStorage.setItem("activeTab",category);
-            let activeTab = localStorage.getItem("activeTab")
-            fetchEmployees(activeTab, `${activeTab}Employees`)
+            fetchEmployees(category, `${category}Employees`);
         }
     });
 });
