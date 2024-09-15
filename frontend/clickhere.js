@@ -1,5 +1,5 @@
 function DeleteHere(item) {
-  if (confirm("Are you want to remove?")) {
+  if (confirm("Are you sure! you want this to be removed?")) {
     fetch(`/delete/${item.value}`, { method: "DELETE" })
       .then(() => {
         console.log("successfully deleted!!");
@@ -7,6 +7,19 @@ function DeleteHere(item) {
       .catch((err) => {
         console.log(err.message);
       });
+  }
+  location.reload();
+}
+function deletetab(item){
+  console.log(item)
+  if(confirm("Are you sure! you want this whole tab to be removed?")){
+    fetch(`/tab/${item.value}`,{method:'DELETE'})
+    .then(()=>{
+      console.log("successfully removed");
+    })
+    .catch((err)=>{
+      console.log(err.message)
+    })
   }
   location.reload();
 }

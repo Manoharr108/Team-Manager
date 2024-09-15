@@ -2,12 +2,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryDropdown = document.getElementById('category');
     const tabContainer = document.getElementById('achievementTabs');
     const tabContentContainer = document.getElementById('tabContent');
+    const tabdelete = document.getElementById("tabcategory");
 
     // Function to update the dropdown based on active tab
     function updateCategoryDropdown() {
         const activeTab = document.querySelector('.nav-link.active');
         if (activeTab) {
             const activeTabId = activeTab.getAttribute('id').replace('-tab', ''); // Remove '-tab' from tab id
+            tabdelete.value = activeTabId
+            // console.log(tabdelete.value)
             categoryDropdown.value = activeTabId; // Set dropdown value based on 
         }
     }
@@ -22,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initially update dropdown based on the default active tab
     updateCategoryDropdown();
-    let categories = []
+    let categories = [];
     function addTabsAndContent() {
         fetch(`/employees`) // Fetch the employee data from your API
             .then(response => response.json())
@@ -33,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Extract unique categories from employee data
                  categories = [...new Set(data.emp.map(employee => employee.category))];
-                
+                 tabdelete.value = categories[0]
                 // Populate dropdown with categories
                 categories.forEach(category => {
                     let option = document.createElement('option');
