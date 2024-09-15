@@ -65,3 +65,15 @@ exports.FindAnEmplyoee = async(req,res)=>{
         return res.status(500).json({message:"something went wrong!"})
     }
 }
+
+exports.DeleteTab = async(req,res)=>{
+    let {category} = req.params;
+    try {
+       let emp =  await operation.deleteMany({category:category})
+           .then((result)=>{
+               return res.status(200).json({message:"successfully removed the whole " +category +" tab"})
+        })
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}

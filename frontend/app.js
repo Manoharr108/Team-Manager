@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const activeTab = document.querySelector('.nav-link.active');
         if (activeTab) {
             const activeTabId = activeTab.getAttribute('id').replace('-tab', ''); // Remove '-tab' from tab id
-            categoryDropdown.value = activeTabId; // Set dropdown value based on tab
+            categoryDropdown.value = activeTabId; // Set dropdown value based on 
         }
     }
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initially update dropdown based on the default active tab
     updateCategoryDropdown();
-
+    let categories = []
     function addTabsAndContent() {
         fetch(`/employees`) // Fetch the employee data from your API
             .then(response => response.json())
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryDropdown.innerHTML = ''; // Clear previous dropdown options
 
                 // Extract unique categories from employee data
-                let categories = [...new Set(data.emp.map(employee => employee.category))];
+                 categories = [...new Set(data.emp.map(employee => employee.category))];
                 
                 // Populate dropdown with categories
                 categories.forEach(category => {
@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // If no employees, show a message indicating the tab is empty
                     // Loop through the employees and display them
                     // console.log(data.length)
-                    if(data.length<2){
-                        alert("hey! this tab is empty")
+                    if(data.length==1){
+                        // alert("hey! this tab is empty")
                         employeeContainer.innerHTML=`  <h1>hey! this is empty</h1>`
                         return
                     }
@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         `;
                         }
-                    
                     employeeContainer.innerHTML += employeeCard;
                 });
             })
@@ -130,7 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let tab = event.target;
         if (tab.tagName === 'A') {
             let category = tab.getAttribute('href').substring(1).replace('-pane', ''); // Extract category from tab's href
-            fetchEmployees(category, `${category}Employees`);
+            // fetchEmployees(category, `${category}Employees`);
+            localStorage.setItem("activeTab",category);
+            let activeTab = localStorage.getItem("activeTab")
+            fetchEmployees(activeTab, `${activeTab}Employees`)
         }
     });
 });
